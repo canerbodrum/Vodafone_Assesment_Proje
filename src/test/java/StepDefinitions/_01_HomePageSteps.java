@@ -23,7 +23,13 @@ public class _01_HomePageSteps {
     public void userShouldBeNagivatedVodafoneHomePage() {
         dc.verifyContainsTextFunction(dc.login,"Giriş Yap");
     }
+    @Given("Navigate to HomePage")
+    public void navigate_to_homepage() {
 
+
+        GWD.getDriver().get("https://www.vodafone.com.tr/");
+
+    }
 }
 
 

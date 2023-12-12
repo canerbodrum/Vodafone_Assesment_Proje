@@ -43,6 +43,10 @@ public class DialogContent extends Parent {
     public WebElement login;
     @FindBy(xpath = "//a[text()='Giriş Yap']")
     public WebElement login2;
+    @FindBy(xpath = "//*[@class='login--remembered-item']")
+    public WebElement mynumber;
+
+
     @FindBy(xpath = "//h4[text()='Galaxy A24']")
     public WebElement GalaxyA24;
     @FindBy(css = "[aria-label='Sepete Ekle']")
@@ -58,8 +62,8 @@ public class DialogContent extends Parent {
     public WebElement checkbox2;
     @FindBy(xpath = "(//button[text()='Devam Et'])[2]")
     public WebElement vodafonluDegilimLoginButton;
-    @FindBy(xpath = "//span[text()='AHMET C.']")
-    public WebElement ahmetc;
+    @FindBy(xpath = "//div[@class='user-menu__nav']")
+    public WebElement usermenu;
 
     @FindBy(css = "[aria-label='Sepetim']")
     public WebElement sepet;

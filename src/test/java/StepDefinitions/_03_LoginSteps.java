@@ -1,16 +1,18 @@
 package StepDefinitions;
 
 import Pages.DialogContent;
+import Pages.Parent;
 import Utilities.GWD;
 import Utilities.SessionManager;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.json.JSONObject;
+import org.testng.Assert;
 
 import java.io.IOException;
 
-public class _03_LoginSteps {
+public class _03_LoginSteps extends Parent {
     DialogContent dc = new DialogContent();
     @When("Login With individual account")
     public void loginWithIndividualAccount() throws IOException, InterruptedException {
@@ -23,12 +25,16 @@ public class _03_LoginSteps {
         JSONObject existingSession = new JSONObject();
         existingSession.put("path","/");
         existingSession.put("domain",".vodafone.com.tr");
-        existingSession.put("name","currentSessionUserToken");
+        existingSession.put("name","tokenIdList");
         existingSession.put("isHttpOnly",true);
         existingSession.put("isSecure",true);
-        existingSession.put("expiry","Sat Dec 09 20:42:42 EET 2025");
-        existingSession.put("value","DCE-fa940d52-31b8-4b1b-bded-c6f0b35e9b65");
+        existingSession.put("expiry","2024-06-06T22:14:19.715Z");
+        existingSession.put("value","|DCE-fa940d52-31b8-4b1b-bded-c6f0b35e9b65");
         sessionManager.setCookies(existingSession);
+        dc.clickFunction(dc.login);
+        waitUntilClickable(dc.login2);
+        dc.login2.click();
+        dc.clickFunction(dc.mynumber);
     }
     @And("Navigate to Login Page And Click Without Vodafone Account")
     public void navigateToLoginPageAndClickWithoutVodafoneAccount() {
@@ -44,6 +50,7 @@ public class _03_LoginSteps {
 
     @Then("Verify Cridential user Should Be Login")
     public void verifyCridentialUserShouldBeLogin() {
-        dc.verifyContainsTextFunction(dc.ahmetc,"AHMET C.");
+        waitUntilVisible(dc.usermenu);
+        Assert.assertTrue(dc.usermenu.isDisplayed());
     }
 }
